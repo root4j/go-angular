@@ -1,0 +1,17 @@
+@api = http://localhost:4000/api/tasks
+
+### get all task
+GET {{api}}
+
+### get a single task
+GET {{api}}/1
+
+### Create Task
+POST {{api}}
+Content-Type: application/json
+
+{
+  "title": "Task 1",
+  "description": "Task 1 description",
+  "userId": 1
+}
