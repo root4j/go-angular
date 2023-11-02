@@ -24,7 +24,7 @@ To run the application the **Docker** process must be running. If you are going 
 ```sh
 docker network create --driver bridge go-net
 docker network ls
-docker run --rm --name go-db -p 5432:5432 -e POSTGRES_PASSWORD=Wn9sWrWST4fNzkWR#A -e POSTGRES_DB=godb --network go-net -d postgres:15-alpine
+docker run --rm --name go-db -p 5432:5432 -e POSTGRES_PASSWORD=Wn9sWrWST4fNzkWR#A --network go-net -d postgres:15-alpine
 docker build -t go-img .
 docker run -dti -p 8080:8080 --network go-net --name go-app 
 ```

@@ -9,17 +9,19 @@ import (
 )
 
 var DB *gorm.DB
-var DSN = "host=go-db user=postgres password=Wn9sWrWST4fNzkWR#A dbname=godb port=5432 sslmode=disable"
+var DSN = "host=go-db user=postgres password=Wn9sWrWST4fNzkWR#A dbname=postgres port=5432 sslmode=disable"
 
 func DBConnection() {
 	var error error
 	var myDNS string
 
-	envDNS := os.Getenv("GO_APP_DSN")
+	envHost := os.Getenv("GO_APP_DB_HOST")
+	envUser := os.Getenv("GO_APP_DB_USER")
+	envPswd := os.Getenv("GO_APP_DB_PSWD")
 
-	if envDNS != "" {
+	if envHost != "" && envUser != "" && envPswd != "" {
 		log.Println("dns by env var")
-		myDNS = envDNS
+		myDNS = "host=" + envHost + " user=" + envUser + " password=" + envPswd + " dbname=postgres port=5432 sslmode=disable"
 	} else {
 		log.Println("dns by docker")
 		myDNS = DSN
