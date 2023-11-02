@@ -21,7 +21,7 @@ func DBConnection() {
 
 	if envHost != "" && envUser != "" && envPswd != "" {
 		log.Println("dns by env var")
-		myDNS = "host=" + envHost + " user=" + envUser + " password=" + envPswd + " dbname=postgres port=5432 sslmode=disable"
+		myDNS = "host=" + envHost + " user=" + envUser + " password=" + envPswd + " dbname=postgres port=5432"
 	} else {
 		log.Println("dns by docker")
 		myDNS = DSN
