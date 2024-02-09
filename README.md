@@ -28,7 +28,7 @@ docker run -dti -p 8080:8080 --name go-app go-img
 Once you execute the commands you can run the application in your browser at the following url http://localhost:8080. If you have problems with the port, you can change it with the following command:
 
 ```sh
-docker run -dti -p 8888:8080 --name go-app 
+docker run -dti -p 8888:8080 --name go-app go-img
 ```
 
 If you want to verify what the container log is, you can do it with the following command:
