@@ -16,23 +16,19 @@ The following libraries and templates were used for this code:
 - [Angular](https://angular.io/)
 - [PrimeNG](https://primeng.org/)
 - [Sakai NG](https://github.com/primefaces/sakai-ng)
-- [Postgres Docker Image](https://hub.docker.com/_/postgres)
 
 ## Scripts to Run the Application
 To run the application the **Docker** process must be running. If you are going to install **Docker** on **Windows**, you must keep in mind that you must first install the **WSL** (Windows Subsystem for Linux) application, this will allow you to execute **Docker** commands before installing **Docker Desktop** or **Rancher Desktop**. To run the application you must be located in the folder where the **Dockerfile** file is located.
 
 ```sh
-docker network create --driver bridge go-net
-docker network ls
-docker run --rm --name go-db -p 5432:5432 -e POSTGRES_PASSWORD=Wn9sWrWST4fNzkWR#A --network go-net -d postgres:15-alpine
 docker build -t go-img .
-docker run -dti -p 8080:8080 --network go-net --name go-app 
+docker run -dti -p 8080:8080 --name go-app go-img
 ```
 
 Once you execute the commands you can run the application in your browser at the following url http://localhost:8080. If you have problems with the port, you can change it with the following command:
 
 ```sh
-docker run -dti -p 8888:8080 --network go-net --name go-app 
+docker run -dti -p 8888:8080 --name go-app 
 ```
 
 If you want to verify what the container log is, you can do it with the following command:

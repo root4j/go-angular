@@ -5,10 +5,12 @@ WORKDIR /frontend
 RUN npm install
 RUN ng build
 
-FROM golang:1.21.3-alpine AS GO_BUILD
+FROM golang:1.21.6-alpine AS GO_BUILD
 COPY backend /backend
 WORKDIR /backend
-RUN go build -o /go/bin/api
+ENV CGO_ENABLED=1
+RUN apk add --no-cache gcc musl-dev
+RUN go build -ldflags='-s -w -extldflags "-static"' -o /go/bin/api
 
 FROM alpine:3
 WORKDIR /app
